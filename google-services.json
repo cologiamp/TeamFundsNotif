@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "361820351905",
+    "firebase_url": "https://teamfunds-51768.firebaseio.com",
+    "project_id": "teamfunds-51768",
+    "storage_bucket": "teamfunds-51768.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361820351905:android:9308cf4e4ce153aeb2efe0",
+        "android_client_info": {
+          "package_name": "com.giampaoli.teamfunds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361820351905-g1iesdkhl96d4apnc2i07dsr9quve6d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRd4ooAJLp7joaO0Me9ctK3op2YvYdoLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361820351905-g1iesdkhl96d4apnc2i07dsr9quve6d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
