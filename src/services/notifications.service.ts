@@ -31,12 +31,16 @@ export class NotificationsService {
 
   topicSubscription(topic) {
     this.firebase.subscribe(topic).then((res: any) => {
+      alert(res);
+      alert(JSON.stringify(res));
       console.log('Subscribed to topic: ' + topic, res);
     });
   }
 
   topicUnsubscription(topic) {
     this.firebase.unsubscribe(topic).then((res: any) => {
+      alert(res);
+      alert(JSON.stringify(res));
       console.log('Unsubscribed from topic: ' + topic, res)
     });
   }
