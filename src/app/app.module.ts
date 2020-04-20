@@ -3,10 +3,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
-import {AboutPage} from '../pages/about/about';
-import {ContactPage} from '../pages/contact/contact';
-import {HomePage} from '../pages/home/home';
-import {TabsPage} from '../pages/tabs/tabs';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { CustomerPage } from '../pages/customer/customer';
+import { CustomerPageModule } from '../pages/customer/customer.module';
+
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -15,6 +18,10 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {NotificationsService} from "../services/notifications.service";
 import {Firebase} from "@ionic-native/firebase";
 import {FIREBASE_CONFIG} from "../config/firebase.config";
+
+import { HttpModule } from '@angular/http';
+import { PostProvider } from '../providers/post-provider';
+import { IonicStorageModule } from '@ionic/Storage';
 
 @NgModule({
   declarations: [
@@ -26,9 +33,12 @@ import {FIREBASE_CONFIG} from "../config/firebase.config";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    IonicStorageModule.forRoot(), 
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    CustomerPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,6 +53,7 @@ import {FIREBASE_CONFIG} from "../config/firebase.config";
     SplashScreen,
     Firebase,
     NotificationsService,
+    PostProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

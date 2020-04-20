@@ -3,14 +3,16 @@ import {Platform, ToastController} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
-import {TabsPage} from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tabs';
+import { CustomerPage } from '../pages/customer/customer';
+
 import {NotificationsService} from "../services/notifications.service";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any = CustomerPage;
 
   constructor(private statusBar: StatusBar,
               private splashScreen: SplashScreen,
