@@ -18,6 +18,7 @@ export class CustomerPage {
 
   anggota: any;
   username: string;
+  apikey: any;
   
   customers: any = [];
   limit: number = 13; // LIMIT GET PERDATA
@@ -44,17 +45,17 @@ export class CustomerPage {
   ionViewWillEnter(){
     this.storage.get('session_storage').then((res)=>{
       this.anggota = res;
-      console.log(res);
-//      this.username = this.anggota.username;
+      console.log('session_storage');
       console.log(res);
 
       if(!this.anggota){
 
-        this.navCtrl.push('LoginPage');
+        this.navCtrl.setRoot('LoginPage');
 
       }else{
 
         this.username = this.anggota.username;
+        this.apikey = this.anggota.apikey;
         this.customers = [];
         this.start = 0;
         this.loadCustomer();      
@@ -127,16 +128,36 @@ export class CustomerPage {
   			aksi : 'getdata',
   			limit : this.limit,
   			start : this.start,
+        apikey: this.apikey
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.postPvdr.postDataCustomer(body, 'proses-api.php').subscribe(data => {
         console.log("POSTDATA loadCustomer");
-  			for(let customer of data.result){
-  				this.customers.push(customer);
-  			}
-  			resolve(true);
+        if(data.success){
+          for(let customer of data.result){
+            this.customers.push(customer);
+          }
+          resolve(true);
+        }else{
+
+          alert(data.msg);
+          this.prosesAutoLogout();
+
+        }
+
   		});
   	});
+  }
+
+  async prosesAutoLogout(){
+    this.storage.clear();
+    this.navCtrl.setRoot('LoginPage');
+    //this.router.navigate(['/login']);
+    const toast = await this.toastCtrl.create({
+        message: 'Too many active sessions, please log in again',
+        duration: 3000
+      });
+    toast.present();
   }
 
   async prosesLogout(){
