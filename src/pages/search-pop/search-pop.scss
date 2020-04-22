@@ -1,0 +1,40 @@
+page-search-pop {
+
+}
+
+.search_Pop{
+    .popover-content{
+        width:calc( 100% - #{$toolbar-md-height}*2);
+        left:0px!important;
+        top:0px!important;
+        background: none;
+        height: $toolbar-md-height;
+        border-radius:0px;
+        .content{
+            background:none;
+            text-align: center;
+        }
+    }
+    .searchbar{
+        padding:0px;
+        background:none;
+        .searchbar-input{
+            padding:0px $control-height;
+            height: $toolbar-md-height;
+        }
+        .searchbar-search-icon{
+            width:$control-height;
+            height: $toolbar-md-height;
+            background-size:30px;
+            background-position: center center;
+            left:0px;
+            top:0px;
+        }
+        .searchbar-input{
+            @extend %inputFont;
+            color: color($colors,dark);
+            border-radius:0px;
+        }
+    }
+    
+}

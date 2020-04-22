@@ -1,0 +1,18 @@
+<ion-content  class="sign" style="background-image:url('assets/imgs/back.png')" >
+  
+  <div class="signForm">
+    <img src="assets/imgs/logo.png"/>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="md-mail" item-left color="light"></ion-icon>
+        <ion-input type="email" placeholder="E-mail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-lock" item-left color="light"></ion-icon>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block color="color2" (click)="rootPage('HomePage')">LOGIN</button>
+    <p ion-text color="light" navPush="SignUpPage" >No account yet ? Create one</p>
+  </div>
+</ion-content>

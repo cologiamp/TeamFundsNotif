@@ -1,0 +1,125 @@
+page-all-matches {
+    .fixed-content{
+        height:$control-height;
+        background: darken(color($colors,color1),5%);
+    }
+    .matchItem{
+        background:color($colors,light);
+    }
+    .list{
+        display:block;
+        width:calc(100% - #{$content-padding}*2);
+        margin:$content-padding;
+        border-radius:$control-radius;
+        @extend %outerShadow;
+        overflow:hidden;
+        .list-header{
+            background-color:color($colors,color5);
+            margin-top:0px!important;
+            height:$control-height;
+            padding:0px $content-padding;
+            .item-inner{
+                margin:0px;
+            }
+            .label{
+                color:color($colors,dark);
+                font-size:$mainFont;
+                font-weight:bold;
+                @include whiteNoWrap(20px);
+            }
+            .icon{
+                font-size:2rem;
+                width: 22px;
+                text-align: center;
+                min-height:0px;
+            }
+            img{
+                height:20px;
+                object-fit: contain;
+            }
+        }
+    }
+}
+.calendarToolbar{
+    padding:0px!important;
+    .toolbar-background{
+        background-color:darken(color($colors,color1),5%);
+    }
+    .calendar{
+        &.grid{
+            padding:0px $content-padding/2;
+            .col{
+                padding:0px $content-padding/2;
+                overflow:hidden;
+                &[col-auto]{
+                    .icon{
+                        height:40px;
+                        line-height:40px;  
+                        display:block;
+                        width:44px;
+                        text-align: center;
+                    }
+                }
+                p{
+                    color: color($colors,color2);
+                    margin:0px;
+                    @include whiteNoWrap(36px);
+                    width:100%;
+                    text-align:center;    
+                    display:flex;
+                    flex-direction:row;
+                    justify-content:center;
+                    span{
+                        max-width:50%;
+                        @include whiteNoWrap(36px);
+                        padding:0px 2px;
+                    } 
+                }
+            }
+        }
+    }
+    .daysScroll{
+        padding:0px;
+        min-height:0px;
+        .toolbar-background{
+            background: darken(color($colors,color1),5%);
+        }
+        .scroll-x{
+            white-space: nowrap;
+            height:58px;
+            .day{
+                $x:100%/7;
+                margin:0px;
+                display:inline-block;
+                height:58px;
+                width:$x;
+                text-align:center;
+                padding:0 5px;
+                p{
+                    margin:0px;
+                    @include whiteNoWrap(20px);
+                    color: color($colors,light);
+                    display:block;
+                }
+                .button{
+                    padding:0px;
+                    width:30px;
+                    height:30px;
+                    line-height:30px;
+                    border-radius:50%;
+                    background:none;
+                    display: block;
+                    margin: auto;
+                    .button-inner{
+                        color: color($colors,light);
+                    }
+                }
+                &.active{
+                    .button{
+                        background: color($colors,color2);
+                    }
+                }
+            }
+        }
+    }
+}

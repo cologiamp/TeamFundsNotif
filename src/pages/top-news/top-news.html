@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Top News</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card class="newsCard" *ngFor="let item of lastNews" navPush="TopNewsDetailsPage">
+    <!-- if images in this slide equaled in height please remove class="imgResponsive" from img Tag -->
+    <img class="imgResponsive" src="{{item.img}}"/>
+    <div class="container" text-left>
+      <h4 ion-text color="light">{{item.title}}</h4>
+      <p ion-text color="light">{{item.subTitle}}</p>
+
+      <ion-grid no-padding class="gridFooter">
+        <ion-row>
+          <ion-col col padding-right>
+            <p ion-text color="light">4 HOURS AGO</p>
+          </ion-col>
+          <!-- users like number -->
+          <ion-col col-auto padding-right>
+            <ion-item (click)="like($event,item)">
+              <ion-icon  item-left color="color2" [name]="item.clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+              <p ion-text color="light">{{item.numLike}}</p>
+            </ion-item>
+          </ion-col>  
+
+          <!-- user Comment number -->
+          <ion-col col-auto>
+            <ion-item>
+              <ion-icon name="md-text" color="color2" item-left></ion-icon>
+              <p ion-text color="light">160</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-card>
+</ion-content>

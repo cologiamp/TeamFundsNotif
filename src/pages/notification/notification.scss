@@ -1,0 +1,32 @@
+page-notification {
+    .list{
+        .grid{
+            h5{
+                margin:0px;
+                font-weight:bold;
+                @include whiteNoWrap(20px);
+            }
+            p{
+                @include whiteNoWrap(20px);
+                margin:0px;
+                font-size:1rem!important;
+                font-weight:500;
+            }
+            .col{
+                &[col-auto]{
+                    max-width:30%;
+                }
+            }
+        }
+        .item{
+            @extend %outerShadow;
+            padding:$content-padding;
+            border-radius:$control-radius;
+            margin-bottom:$content-padding;
+            p{
+                margin:0px;
+                white-space:normal;
+            }
+        }
+    }
+}

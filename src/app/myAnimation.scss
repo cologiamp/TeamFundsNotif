@@ -1,0 +1,277 @@
+@import "../assets/animate/animate.scss";
+.animateApp{
+// ********************** My Classes that extended *************
+
+    .pulse{
+        @include pulse(
+            $duration:1.5s,
+            $count: infinite,
+            $delay: 0s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+ 
+    .fadeInUp{
+        @include fadeInUp(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .25s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+    .fadeInDown{
+        @include fadeInDown(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .25s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+    .fadeIn{
+        @include fadeIn(
+            $duration:2.5s,
+            $count: 1,
+            $delay: .5s,
+            $function: ease, 
+            $fill: both
+        ); 
+    }
+    
+    .fadeInLeft{
+        @include fadeInLeft(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .25s,
+            $function: ease, 
+            $fill: both
+        ); 
+    } 
+
+// *************************************
+
+    .ion-ios-heart{
+        @extend .pulse;
+    }
+    page-home{
+        .slides{
+            @extend .fadeInUp;
+            .newsCard{
+                animation:none;
+            }
+        }
+        .topNews{
+            @include fadeInUp(
+                $duration:2.5s,
+                $count: 1,
+                $delay: 1s,
+                $function: ease, 
+                $fill: both
+            ); 
+        }
+        .list{
+            @include fadeInUp(
+                $duration:2.5s,
+                $count: 1,
+                $delay: 2s,
+                $function: ease, 
+                $fill: both
+            ); 
+            &.lastPhotos{
+                transform:none;
+                @include fadeInUp(
+                $duration:2.5s,
+                $count: 1,
+                $delay: 3s,
+                $function: ease, 
+                $fill: both
+            ); 
+            }
+        }
+    }
+ 
+
+    page-all-matches{
+        .calendarToolbar{
+            .toolbar-content{
+                @include fadeInUp(
+                    $duration:1.5s,
+                    $count: 1,
+                    $delay:0s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+                button{
+                    animation: none;
+                }
+                .day{  
+                    @include fadeIn(
+                        $duration:1.5s,
+                        $count: 1,
+                        $delay:0s,
+                        $function: ease, 
+                        $fill: both
+                    ); 
+                }
+            }
+        }
+    }
+    .segment,.scrollingBar ,.header button,.header .title{
+        @extend .fadeInDown;
+    }
+    .matchResultBar{
+        .col{
+            &:nth-child(1){
+                @include fadeInLeft(
+                    $duration:2s,
+                    $count: 1,
+                    $delay:0s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+            } 
+            &:nth-child(2){
+                @include fadeIn(
+                    $duration:4s,
+                    $count: 1,
+                    $delay:0s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+            }
+            &:nth-child(3){
+                @include fadeInRight(
+                    $duration:2s,
+                    $count: 1,
+                    $delay:0s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+            }
+        }
+    }
+
+    
+    .matchStats,page-profile .scroll-content,page-top-news-details .scroll-content ,.sign .signForm,page-setting .scroll-content{
+        @extend .fadeInUp;
+    }
+    .avatarItem,.goals .item,.squad .item,.teamMatchs .item,.lastPhotos .photoItem,
+    .leagueStats .list,.leagueMatches .list,.tabelList,page-notification .list .item-block,page-all-matches .list,
+    .newsCard,page-select-league .list .item
+    {
+        $x:.3;
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}){
+                @include fadeInUp(
+                    $duration:1s,
+                    $count: 1,
+                    $delay:#{$x}s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+            }
+            $x:$x + .7;
+        } 
+    }
+    .timeLine_list .item{
+        $x:1.5;
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}){
+                @include fadeInUp(
+                    $duration:1s,
+                    $count: 1,
+                    $delay:#{$x}s,
+                    $function: ease, 
+                    $fill: both
+                ); 
+            }
+            $x:$x + .5;
+        } 
+    }
+    page-select-league .list,.timeLine_list,.squad{
+        @extend .fadeIn;
+    }
+    page-photos-details{
+        .list{
+            .item{
+                &:nth-child(6n+1){
+                    $x:.3;
+                    @for $i from 1 through 50 {
+                        &:nth-child(#{$i}){
+                            @include fadeInLeft(
+                                $duration:1s,
+                                $count: 1,
+                                $delay:#{$x}s,
+                                $function: ease, 
+                                $fill: both
+                            ); 
+                        }
+                        $x:$x + .3;
+                    } 
+                }
+                
+                &:nth-child(6n+2){
+                    $x:1;
+                    @for $i from 1 through 50 {
+                        &:nth-child(#{$i}){
+                            @include fadeInRight(
+                                $duration:1s,
+                                $count: 1,
+                                $delay:#{$x}s,
+                                $function: ease, 
+                                $fill: both
+                            ); 
+                        }
+                        $x:$x + .3;
+                    }  
+                }
+                $x:2;
+                @for $i from 1 through 50 {
+                    &:nth-child(#{$i}){
+                        @include fadeInUp(
+                            $duration:1s,
+                            $count: 1,
+                            $delay:#{$x}s,
+                            $function: ease, 
+                            $fill: both
+                        ); 
+                    }
+                    $x:$x + .3;
+                } 
+
+                &:nth-child(6n+4){
+                    $x:3;
+                    @for $i from 1 through 50 {
+                        &:nth-child(#{$i}){
+                            @include fadeInLeft(
+                                $duration:1s,
+                                $count: 1,
+                                $delay:#{$x}s,
+                                $function: ease, 
+                                $fill: both
+                            ); 
+                        }
+                        $x:$x + .3;
+                    }  
+                }
+                &:nth-child(6n+5){
+                    $x:4;
+                    @for $i from 1 through 50 {
+                        &:nth-child(#{$i}){
+                            @include fadeInRight(
+                                $duration:1s,
+                                $count: 1,
+                                $delay:#{$x}s,
+                                $function: ease, 
+                                $fill: both
+                            ); 
+                        }
+                        $x:$x + .3;
+                    }  
+                }
+            }
+        }  
+    }
+}

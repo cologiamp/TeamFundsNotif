@@ -1,103 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { PostProvider } from '../../providers/post-provider';
-import { Storage } from '@ionic/Storage';
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { Component } from '@angular/core';
+import { IonicPage, NavController,  } from 'ionic-angular';
+import { Global } from '../../providers/global';
 @IonicPage()
-@Component({
+@Component({  
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
 
-
-  anggota: any;
-  username: string;
-  apikey: any;
-  
-  customers: any = [];
-  limit: number = 13; // LIMIT GET PERDATA
-  start: number = 0;
-
-
-  constructor(public navCtrl: NavController, 
-  	public navParams: NavParams,
-  	private postPvdr: PostProvider,
-    private storage: Storage,
-    public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,private global:Global) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  lastNews=[
+    {img:'assets/imgs/news2.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'},
+    {img:'assets/imgs/news1.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'},
+    {img:'assets/imgs/news3.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'}
+  ]
+
+  matches=[
+    {firstTeamImg:'assets/imgs/teams/real_madrid.png',firstTeamName:'Real Madrid', time:'19:30',secondTeamImg:'assets/imgs/teams/granada.png',secondTeamName:'Garnada'},
+    {firstTeamImg:'assets/imgs/teams/barcelona.png',firstTeamName:'Barcelona', time:'22:30',secondTeamImg:'assets/imgs/teams/villarreal.png',secondTeamName:'Villarreal'},
+  ]
+
+  clickLike=false;  
+  numLike=200;
+  like($event){
+    $event.stopPropagation();
+    if(this.clickLike!=true){
+      this.numLike=this.numLike+1;
+      this.clickLike=true;
+    }
+    else{
+      this.numLike=this.numLike - 1;
+      this.clickLike=false;
+    }
   }
-
-  ionViewWillEnter(){
-    this.storage.get('session_storage').then((res)=>{
-      this.anggota = res;
-      console.log('session_storage');
-      console.log(res);
-
-      if(!this.anggota){
-
-        this.navCtrl.setRoot('LoginPage');
-
-      }else{
-
-        this.username = this.anggota.username;
-        this.apikey = this.anggota.apikey;
-        this.customers = [];
-        this.start = 0;
-        this.loadLiveGames();      
-
-      }
-    });
-  
-  }
-
-
-  loadLiveGames(){
-  	return new Promise(resolve => {
-  		let body = {
-  			aksi : 'getdata',
-  			limit : this.limit,
-  			start : this.start,
-        	apikey: this.apikey
-  		};
-
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
-        console.log("POSTDATA loadCustomer");
-        if(data.success){
-          for(let customer of data.result){
-            this.customers.push(customer);
-          }
-          resolve(true);
-        }else{
-
-          alert(data.msg);
-          this.prosesAutoLogout();
-
-        }
-
-  		});
-  	});
-  }
-
-  async prosesAutoLogout(){
-    this.storage.clear();
-    this.navCtrl.setRoot('LoginPage');
-    //this.router.navigate(['/login']);
-    const toast = await this.toastCtrl.create({
-        message: 'Too many active sessions, please log in again',
-        duration: 3000
-      });
-    toast.present();
-  }
-
-}
+}   
+       

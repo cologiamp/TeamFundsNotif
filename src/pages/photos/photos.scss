@@ -1,0 +1,7 @@
+page-photos {
+    .photoItem{
+        border-radius:$control-radius;
+        @extend %outerShadow;
+        margin-bottom:$content-padding;
+    }
+}

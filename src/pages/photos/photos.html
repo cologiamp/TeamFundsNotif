@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Photos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header> 
+<ion-content padding>
+  <ion-list class="lastPhotos">
+    <ion-item class="photoItem" *ngFor="let item of photos" navPush="PhotosDetailsPage">
+      <!-- if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  -->
+      <img src="{{item.img}}" class="imgResponsive"/>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-auto>
+            <h4 ion-text color="dark">{{item.title}}</h4>
+          </ion-col>
+          <ion-col col>
+            <p ion-text color="color2">200 photos</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

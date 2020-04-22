@@ -1,1 +1,49 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" swipeEnabled="false">
+  <ion-header>
+    <ion-toolbar> 
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/imgs/profile.png">
+        </ion-avatar>
+        <h5 ion-text color="light">John Smith</h5>
+        <p ion-text color="light">john_smith@gmail.com</p>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list class="mainMenuList">
+      <ion-item menuClose  *ngFor="let p of pages" (click)="openPage(p.component)">
+        {{p.title}}
+      </ion-item>
+    </ion-list>
+    
+    <!-- leagues list -->
+    <ion-list class="leagueList">
+      <ion-list-header (click)="openPage('SelectLeaguePage')" menuClose>
+        <ion-icon name="md-add-circle" item-left color="color2"></ion-icon>
+        SELECTE LEAGUE
+      </ion-list-header>
+      <ion-item  menuClose *ngFor="let item of leagues" (click)="openPage('LeagueDetailsPage')">
+        <img src="{{item.img}}" item-left/>
+        {{item.name}}
+      </ion-item>
+    </ion-list>
+
+    <!-- Favorite Team  -->
+    <ion-list class="leagueList">
+      <ion-list-header>
+        <ion-icon name="md-add-circle" item-left color="color2"></ion-icon>
+        Favorite Team
+      </ion-list-header>
+      <ion-item *ngFor="let item of teams" menuClose  (click)="openPage('TeamPage')">
+        <img src="{{item.img}}" item-left/>
+        {{item.name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content  [class.animateApp]="animateVarible==true" swipeBackEnabled="false"></ion-nav>

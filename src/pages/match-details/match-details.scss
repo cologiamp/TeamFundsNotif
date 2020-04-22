@@ -1,0 +1,163 @@
+page-match-details {
+    .header{
+        .toolbar{
+            &.matchResultBar{
+                padding:$content-padding*2 $content-padding/2;
+                .toolbar-background{
+                    background: darken(color($colors,color1),5%);
+                }
+            }
+        }
+        .matchResult{
+            height:auto;
+            p{
+                margin:0px;
+                margin-top:$content-padding;
+                font-weight:400;
+                max-width:100%;
+            }
+            .grid{
+                max-width:440px;
+            }
+            .col{
+                .item{
+                    .label{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                            height:44px;
+                            object-fit: contain;
+                        }
+                        p{
+                            color:color($colors,light);
+                            margin-top:$content-padding;
+                            font-weight:400;
+                            max-width:100%;
+                        }
+                    }
+                }
+                &[col-auto]{
+                    .result{
+                        span{
+                            color: color($colors,light);
+                            font-size:3rem!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .matchStats{
+        h5{
+            margin:0px;
+            padding:0px $content-padding;
+        }
+        .list{
+            border-radius:$control-radius;
+            display:inline-block;
+            width:calc(100% - #{$content-padding}*2);
+            @extend %outerShadow;
+            margin:$content-padding;
+            .col{
+                p{
+                   @include whiteNoWrap(16px); 
+                }
+                &[col]{
+                    p{
+                        font-weight:500;
+                    }
+                }
+                &[col-auto]{
+                    width:50px;
+                }
+            }
+        }    
+        .progressBar{
+            position: relative;
+            display: flex;
+            align-items: center;
+            height:8px;
+            .container{
+                display:inline-block;
+                height:3px;
+                width:100%;
+                background:color($colors,color4);
+            }
+            .progressActive{
+                display:inline-block;
+                height:100%;
+            }
+        }  
+    }
+    .goals{
+        .item{
+            min-height:50px;
+            .label{
+                display:flex;
+                align-items: center;
+                span{
+                    font-size:1.4rem;
+                    font-weight: bold;
+                }
+                p{
+                    margin:0px $content-padding;
+                }
+                img{
+                    width:18px;
+                    height:18px;
+                    object-fit: contain;
+                }
+            }
+            &.secondTeam{
+               .label{
+                   justify-content: flex-end;
+               }
+            }
+        }
+    }  
+    .timeLine_list{
+        margin:$content-padding;
+        @extend %outerShadow;
+        border-radius:$control-radius;
+        display:inline-block;
+        width:calc(100% - #{$content-padding}*2);
+        .item{
+            padding:$content-padding/2;
+            &.item-block{
+                margin-bottom:0px;
+            }
+            .grid{
+                padding:0px;
+                .col{
+                    padding:$content-padding/2;
+                    display:flex;
+                    overflow:hidden;
+                    flex-direction: column;
+                    justify-content: center;
+                    img{    
+                        height:30px;
+                        width: 14px;
+                        object-fit: contain;
+                    }
+                }
+            }
+            p{
+                white-space:normal;
+                margin:0px;
+            }
+            &.team2{
+                direction:rtl;
+            }
+        }
+    }
+    .avatarItem{
+        margin:$content-padding;
+        @extend %outerShadow;
+    }
+}
+
+
+

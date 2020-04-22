@@ -1,0 +1,51 @@
+page-sign-in {
+
+}
+.sign{
+    @extend .imgBg;
+    .scroll-content{
+        padding:$content-padding*2!important;
+        background:rgba(color($colors,color1),.7);
+        text-align: center;
+        p{
+            @include whiteNormal($control-height,1);
+            margin:0px;
+            text-align: center;
+            font-weight:500;
+        }
+    }
+}
+
+.signForm{
+    display:inline-block;
+    width:100%;
+    img{
+        width:70%;
+        max-width: 400px;
+        margin:12% 0px 20%;
+    }
+    @include placeholder {
+        font-weight:bold;
+    }
+    .item{
+        height:$control-height;
+        border-bottom:2px solid color($colors,color3)!important;
+        margin-bottom:$content-padding*2;
+        .icon{
+            &[item-left]{
+                font-size:1.65rem;
+                min-height:0px;
+                width:22px;
+                text-align: center;
+            }
+        }
+        .text-input {
+            margin:0px;
+            @extend %inputFont;
+            width:100%;
+        }
+    }      
+    .button{
+        margin-top:40px;
+    }      
+}

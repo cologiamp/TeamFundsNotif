@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>  
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="appForm" padding>
+    <ion-item>
+      <ion-label>App Language</ion-label>
+        <ion-select interface="popover" placeholder="App Language" [(ngModel)]="language">
+          <ion-option value="en">English</ion-option>
+          <ion-option value="fr">French</ion-option>
+        </ion-select>
+    </ion-item>
+  </div>
+  <div class="static_notify">
+    <ion-item>
+      <ion-label>Notification</ion-label>
+      <ion-checkbox [(ngModel)]="notification"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Animation avilability</ion-label>
+      <ion-checkbox (ionChange)="animateApp($event)"  checked="{{action}}" [(ngModel)]="action"></ion-checkbox>
+    </ion-item> 
+  </div>
+</ion-content>

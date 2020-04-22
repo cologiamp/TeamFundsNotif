@@ -1,0 +1,206 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Matches</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar class="matchResultBar">
+    <!-- match item  -->
+    <ion-item class="matchResult">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col>
+            <ion-item navPush="TeamPage">
+              <img src="assets/imgs/teams/arsenal.png"/>
+              <p>Arsenal</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+          <ion-col col-auto>
+            <div class="result">
+              <span ion-text color="color1">3</span>
+              <span ion-text color="color1">-</span>
+              <span ion-text color="color1">1</span>
+            </div>
+            <p ion-text color="color2">Full Time</p>
+          </ion-col>
+          <!-- second team -->
+          <ion-col col>
+            <ion-item navPush="TeamPage">
+              <img src="assets/imgs/teams/bate_borisov.png"/>
+              <p>BATE Borisov</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngSwitch]='tab'>
+  <!-- tabs -->
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="stats">STATS</ion-segment-button>
+    <ion-segment-button value="goals">GOALS</ion-segment-button>
+    <ion-segment-button value="timeline">TIMELINE</ion-segment-button>
+  </ion-segment>
+
+  <!-- match stats -->
+  <div class="matchStats" margin-top *ngSwitchCase="'stats'">
+    <h5 ion-text color="color2">BEST AVERAGE RATING</h5>
+    <ion-list>
+      <!-- state with percentage -->
+      <ion-item *ngFor="let item of statsPercentage">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-auto text-left>
+              <p ion-text color="color1" no-margin>{{item.team1}}</p>
+            </ion-col>
+            <ion-col col text-center>
+              <p ion-text color="dark" no-margin >{{item.title}}</p>
+            </ion-col>
+            <ion-col col-auto text-right>
+              <p ion-text color="color1" no-margin>{{item.team2}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <div class="progressBar" progress-right>
+                <span class="container"></span>
+                <span class="progressActive" [ngStyle]="{'width': + item.team1}" active-from-right></span>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <div class="progressBar" >
+                <span class="container"></span>
+                <span class="progressActive" [ngStyle]="{'width': + item.team2}" active-from-left></span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <!-- state with number -->
+      <ion-item *ngFor="let item of statsNum">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-auto text-left>
+              <p ion-text color="color1" no-margin>{{item.team1}}</p>
+            </ion-col>
+            <ion-col col text-center>
+              <p ion-text color="dark" no-margin >{{item.title}}</p>
+            </ion-col>
+            <ion-col col-auto text-right>
+              <p ion-text color="color1" no-margin>{{item.team2}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <div class="progressBar" progress-right>
+                <span class="container"></span>
+                <span class="progressActive" [ngStyle]="{'width': + item.team1P}" active-from-right></span>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <div class="progressBar" >
+                <span class="container"></span>
+                <span class="progressActive" [ngStyle]="{'width': + item.team2P}" active-from-left></span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+  
+  <!-- goals -->
+  <div class="goals" *ngSwitchCase="'goals'" padding>
+    <ion-list>
+      <!-- first team goals -->
+      <ion-item  margin-bottom>
+        <ion-avatar item-left>
+          <img src="assets/imgs/player1.png">
+        </ion-avatar>
+        <span ion-text color="color1">11'</span>
+        <p ion-text color="dark">Player Name</p>
+        <img src="assets/imgs/referee/ball.png"/>  
+      </ion-item>
+  <!-- ================================================= -->
+      <!-- second team goals -->
+      <ion-item class="secondTeam" margin-bottom >
+        <ion-avatar item-right>
+          <img src="assets/imgs/player2.png">
+        </ion-avatar>
+        <span ion-text color="color1">20'</span>
+        <p ion-text color="dark">Player Name</p>
+        <img src="assets/imgs/referee/ball.png"/>
+      </ion-item>
+
+  <!-- ================================================= -->
+      <!-- first team goals -->
+      <ion-item  margin-bottom>
+          <ion-avatar item-left>
+            <img src="assets/imgs/player1.png">
+          </ion-avatar>
+          <span ion-text color="color1">23'</span>
+          <p ion-text color="dark">Player Name</p>
+          <img src="assets/imgs/referee/ball.png"/>
+        </ion-item>
+
+      <!-- first team goals -->
+      <ion-item  margin-bottom>
+          <ion-avatar item-left>
+            <img src="assets/imgs/player1.png">
+          </ion-avatar>
+          <span ion-text color="color1">34'</span>
+          <p ion-text color="dark">Player Name</p>
+          <img src="assets/imgs/referee/ball.png"/>
+        </ion-item>
+
+    </ion-list>
+  </div>
+
+  <div  *ngSwitchCase="'timeline'"> 
+    <h4  margin ion-text color="color2">Man of the match</h4>
+    <ion-item class="avatarItem">
+      <ion-avatar item-left>
+        <img src="assets/imgs/player2.png"/>
+      </ion-avatar>
+      <h5 ion-text color="dark">Player Name</h5>
+      <p ion-text color="dark">Arsenal</p>
+      <span ion-text color="color1" class="rateNum" item-right>6</span>
+    </ion-item>
+    <!-- highlights -->
+    <ion-list class="timeLine_list">
+        <ion-item [ngClass]="{'team2':item.team =='team2'}" *ngFor="let item of highlights">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <p ion-text color="color1">{{item.time}}'</p>
+              </ion-col>
+              <ion-col col-auto>
+                <img src="assets/imgs/referee/{{item.img}}.png">
+              </ion-col>
+              <ion-col col>
+                <!-- for exchange player -->
+                <p ion-text color="color1" *ngIf="item.content2!=''">{{item.content}}</p>
+                <p ion-text color="color2" *ngIf="item.content2!=''">{{item.content2}}</p>
+
+                <!-- for other -->
+                <p ion-text color="dark" *ngIf="item.content2==''">{{item.content}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+  </div>
+</ion-content>

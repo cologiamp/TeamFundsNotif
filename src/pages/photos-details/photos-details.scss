@@ -1,0 +1,26 @@
+page-photos-details {
+    .list{
+        padding:$content-padding/2;
+        display: inline-block;
+        width: 100%;
+        .item{
+            padding:$content-padding/2;
+            height:200px + $content-padding;
+            .label{
+                height:100%;
+                img{
+                    height:200px;
+                    width:100%;
+                    border-radius:$control-radius;
+                }
+            }
+            &:nth-child(6n+1),&:nth-child(6n+5){
+                width:60%;
+            }
+            &:nth-child(6n+2),&:nth-child(6n+4){
+                width:40%;
+            }
+        }
+
+    }
+}

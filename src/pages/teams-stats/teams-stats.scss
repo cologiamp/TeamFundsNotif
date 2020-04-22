@@ -1,0 +1,13 @@
+page-teams-stats {
+    .list{
+        .item{
+            margin:$content-padding;
+            @extend %outerShadow;
+            &.item-block{
+                &:last-of-type{
+                    margin-bottom:$content-padding!important;
+                }
+            }
+        }
+    }
+}

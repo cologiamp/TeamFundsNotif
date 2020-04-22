@@ -1,0 +1,24 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Average Rating</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-list >
+    <ion-item class="thumbnailItem" *ngFor="let item of teams">
+      <ion-thumbnail item-left>
+        <!-- Team image -->
+        <img src="{{item.img}}"/>
+      </ion-thumbnail>
+      <!-- team Name -->
+      <h5 ion-text color="dark">{{item.team}}</h5>
+      <!-- note -->
+      <p ion-text color="dark">{{item.note}}</p>
+      <!-- rating Number -->
+      <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

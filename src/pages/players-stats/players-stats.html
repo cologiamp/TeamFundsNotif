@@ -1,0 +1,24 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Goals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item class="avatarItem" *ngFor="let item of players">
+      <ion-avatar item-left>
+        <!-- player image -->
+        <img src="{{item.img}}"/>
+      </ion-avatar>
+      <!-- player Name -->
+      <h5 ion-text color="dark">{{item.name}}</h5>
+      <!-- player Team -->
+      <p ion-text color="dark">{{item.team}}</p>
+      <!-- goals , assists or rating Number -->
+      <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

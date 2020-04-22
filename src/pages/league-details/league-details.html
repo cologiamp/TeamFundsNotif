@@ -1,0 +1,221 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Europa League</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar class="scrollingBar">
+    <ion-scroll scrollX="true" scrollY="false" >
+      <p *ngFor="let title of itemInBar ; let i=index" (click)="changeTab(i,title)" [ngClass]="{active: activeBtn == i}" >
+          {{title}}
+      </p>
+    </ion-scroll>
+  </ion-toolbar>
+</ion-header>
+<ion-content [ngSwitch]='tit'>
+
+  <!-- league Tables -->
+  <div *ngSwitchCase="'TABEL'">
+    <ion-list class="tabelList" *ngFor="let g of groups">
+      <ion-list-header>
+        {{g.name}}
+      </ion-list-header>
+      <ion-item>
+        <ion-grid>
+          <!-- titles -->
+          <ion-row>
+            <ion-col col-3 offset-1>  <h5>Team</h5>  </ion-col>
+            <ion-col col> <p>MP</p> </ion-col>
+            <ion-col col> <p>W</p> </ion-col>
+            <ion-col col> <p>D</p> </ion-col>
+            <ion-col col> <p>L</p> </ion-col>
+            <ion-col col> <p>F</p> </ion-col>
+            <ion-col col> <p>A</p> </ion-col>
+            <ion-col col> <p>P</p> </ion-col>
+          </ion-row>
+          <!-- Teams Info -->
+          <ion-row *ngFor="let team of g.teams">
+            <ion-col col-1 >
+              <img src="{{team.img}}" navPush="TeamPage"/>
+            </ion-col>
+            <ion-col col-3> <p navPush="TeamPage">{{team.name}} </p> </ion-col>
+            <ion-col col> <p>{{team.mp}}</p> </ion-col>
+            <ion-col col> <p>{{team.w}}</p> </ion-col>
+            <ion-col col> <p>{{team.d}}</p> </ion-col>
+            <ion-col col> <p>{{team.l}}</p> </ion-col>
+            <ion-col col> <p>{{team.f}}</p> </ion-col>
+            <ion-col col> <p>{{team.a}}</p> </ion-col>
+            <ion-col col> <p>{{team.p}}</p> </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- matches lists -->
+  <div *ngSwitchCase="'MATCHES'" class="leagueMatches" >
+    <ion-list *ngFor="let item of matches">
+      <ion-list-header>
+        {{item.date}}
+      </ion-list-header>
+      <div class="allMatches">
+        <!-- match item  -->
+        <ion-item class="matchItem" *ngFor="let match of item.match" navPush="MatchDetailsPage">
+          <ion-grid>
+            <ion-row>
+              <!-- first team -->
+              <ion-col col>
+                <ion-item (click)="goTo('TeamPage',$event)">
+                  <img src="{{match.firstTeamImg}}" item-right/>
+                  <p text-right>{{match.firstTeamName}}</p>
+                </ion-item>
+              </ion-col>
+              <!-- match time -->
+              <ion-col col-auto>
+                <span ion-text color="color1"  *ngIf="match.next!='Full Time'">{{match.time}}</span>
+                <div class="result" *ngIf="match.next=='Full Time'">
+                  <span ion-text color="color1">6</span>
+                  <span ion-text color="color1">-</span>
+                  <span ion-text color="color1">0</span>
+                </div>
+                <p ion-text color="color2">{{match.next}}</p>
+              </ion-col>
+              <!-- second team -->
+              <ion-col col>
+                <ion-item (click)="goTo('TeamPage',$event)">
+                  <img src="{{match.secondTeamImg}}" item-left/>
+                  <p text-left>{{match.secondTeamName}}</p>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+
+  <!-- news -->
+  <div *ngSwitchCase="'NEWS'" padding>
+    <ion-card class="newsCard" *ngFor="let item of lastNews" navPush="TopNewsDetailsPage">
+      <!-- if images in this slide equaled in height please remove class="imgResponsive" from img Tag -->
+      <img class="imgResponsive" src="{{item.img}}"/>
+      <div class="container" text-left>
+        <h4 ion-text color="light">{{item.title}}</h4>
+        <p ion-text color="light">{{item.subTitle}}</p>
+  
+        <ion-grid no-padding class="gridFooter">
+          <ion-row>
+            <ion-col col padding-right>
+              <p ion-text color="light">4 HOURS AGO</p>
+            </ion-col>
+            <!-- users like number -->
+            <ion-col col-auto padding-right>
+              <ion-item (click)="like($event,item)">
+                <ion-icon  item-left color="color2" [name]="item.clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+                <p ion-text color="light">{{item.numLike}}</p>
+              </ion-item>
+            </ion-col>
+  
+            <!-- user Comment number -->
+            <ion-col col-auto>
+              <ion-item>
+                <ion-icon name="md-text" color="color2" item-left></ion-icon>
+                <p ion-text color="light">160</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card>
+  </div>
+
+  <!-- photos -->
+  <div *ngSwitchCase="'PHOTOS'" padding>
+    <ion-list class="lastPhotos">
+      <ion-item class="photoItem" *ngFor="let item of photos" navPush="PhotosDetailsPage">  
+        <!-- if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  -->
+        <img src="{{item.img}}" class="imgResponsive"/>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-auto>
+              <h4 ion-text color="dark">{{item.title}}</h4>
+            </ion-col>
+            <ion-col col>
+              <p ion-text color="color2">200 photos</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- League Stats -->
+  <div class="leagueStats" *ngSwitchCase="'STATS'"  [ngSwitch]='statsTab'>
+    <!-- tabs -->
+    <ion-segment [(ngModel)]="statsTab">
+      <ion-segment-button value="players">PLAYERS</ion-segment-button>
+      <ion-segment-button value="teams">TEAMS</ion-segment-button>
+    </ion-segment>
+
+    <!-- players stats -->
+    <div *ngSwitchCase="'players'">
+      <ion-list *ngFor="let item of players">
+        <ion-list-header>
+          <h5 ion-text color="color2">{{item.title}}</h5>
+          <button ion-button  icon-right clear item-right navPush="PlayersStatsPage">
+            See All
+            <ion-icon class="goal-arrow-right"></ion-icon>
+          </button>
+        </ion-list-header>
+  
+        <ion-item class="avatarItem">
+          <ion-avatar item-left>
+            <!-- player image -->
+            <img src="{{item.img}}"/>
+          </ion-avatar>
+          <!-- player Name -->
+          <h5 ion-text color="dark">{{item.name}}</h5>
+          <!-- player Team -->
+          <p ion-text color="dark">{{item.team}}</p>
+          <!-- goals , assists or rating Number -->
+          <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Team Stats -->
+    <div *ngSwitchCase="'teams'">
+      <ion-list *ngFor="let item of teams">
+        <ion-list-header>
+          <h5 ion-text color="color2">{{item.title}}</h5>
+          <button ion-button  icon-right clear item-right navPush="TeamsStatsPage">
+            See All
+            <ion-icon class="goal-arrow-right"></ion-icon>
+          </button>
+        </ion-list-header>
+  
+        <ion-item class="thumbnailItem" navPush="TeamPage">
+          <ion-thumbnail item-left>
+            <!-- Team image -->
+            <img src="{{item.img}}"/>
+          </ion-thumbnail>
+          <!-- team Name -->
+          <h5 ion-text color="dark">{{item.team}}</h5>
+          <!-- note -->
+          <p ion-text color="dark">{{item.note}}</p>
+          <!-- goals or rating Number -->
+          <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

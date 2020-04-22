@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Select League</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <!-- favorites list -->
+  <ion-list class="favoriteLeagues" *ngIf="favorites.length > 0">
+    <ion-list-header> 
+      <ion-icon name="md-star" color="color1" item-left></ion-icon>
+      <h4 ion-text color="dark">Favorites</h4>
+    </ion-list-header>
+    <!-- league item  -->
+    <ion-item *ngFor="let item of favorites" navPush="LeagueDetailsPage">
+      <img item-left src="{{item.img}}"/>
+      <p ion-text color="dark">{{item.name}}</p>
+      <ion-icon name="md-star" color="color2" item-right (click)="removeLeague(item ,$event)"></ion-icon>
+    </ion-item>  
+  </ion-list>
+
+  <!-- Leagues list -->
+  <ion-list class="favoriteLeagues" margin-top>
+    <ion-list-header> 
+      <ion-icon name="md-star" color="color4" item-left></ion-icon>
+      <h4 ion-text color="dark">Staff Picks</h4>
+    </ion-list-header>
+    <!-- league item  -->
+    <ion-item *ngFor="let item of leagues"  navPush="LeagueDetailsPage" >
+      <img item-left src="{{item.img}}"/>
+      <p ion-text color="dark">{{item.name}}</p>
+      <ion-icon name="md-star" color="color4" item-right (click)="selectLeague(item,$event)"></ion-icon>
+    </ion-item>  
+  </ion-list>
+</ion-content>  

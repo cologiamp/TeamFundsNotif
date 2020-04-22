@@ -1,0 +1,45 @@
+page-setting {
+    .static_notify{
+        padding:$content-padding/2!important;
+        .item{
+            background:none;
+            &.item-checkbox{
+                margin:0px;
+                padding:$content-padding/2;
+                direction:rtl;
+                min-height:34px;
+                .checkbox{
+                    margin:0px $content-padding/2;
+                    .checkbox-icon{
+                        background:none;
+                        border-color:color($colors,dark);
+                        &.checkbox-checked{
+                            .checkbox-inner{
+                                transform:none;
+                                @include position(0,0,0,0);
+                                margin:auto;
+                                border-radius:2px;  
+                                width: 8px;
+                                height: 8px;
+                                background: color($colors,color1);
+                                border:none;
+                            }
+                        }
+                    }
+                }
+                .label {
+                    padding:0px $content-padding/2;
+                    font-size:$mainFont - .1;
+                    direction:ltr;
+                    color: color($colors,dark);
+                    font-weight:500;
+                }
+            }
+            .checkbox{
+                margin:0px $content-padding!important;
+            }
+        }
+    }
+}
+
+

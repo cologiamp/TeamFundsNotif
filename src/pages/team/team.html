@@ -1,0 +1,156 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Arsenal</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="addFavoriteTeam()">
+        <ion-icon [name]="favoriteTeam ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar class="scrollingBar">
+    <ion-scroll scrollX="true" scrollY="false" >
+      <p *ngFor="let title of itemInBar ; let i=index" (click)="changeTab(i,title)" [ngClass]="{active: activeBtn == i}" >
+          {{title}}
+      </p>
+    </ion-scroll>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [ngSwitch]='tit' >
+
+  <!-- Team Matches -->
+  <div class="teamMatchs" *ngSwitchCase="'MATCHES'">
+    <ion-list >
+      <ion-item class="thumbnailItem" *ngFor="let item of teams" navPush="MatchDetailsPage">
+        <ion-thumbnail item-left>
+          <!-- Team image -->
+          <img src="{{item.img}}" navPush="TeamPage"/>
+        </ion-thumbnail>
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col col-6>
+              <!-- team Name -->
+              <h5 ion-text color="dark" navPush="TeamPage">{{item.team}}</h5>
+              <!-- League Name -->
+              <p ion-text color="dark">{{item.league}}</p>
+            </ion-col>
+            <ion-col col-6>
+              <p ion-text color="dark">Dec 13,2017</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- Time -->
+        <div class="matchTime" item-right  *ngIf="item.result==''">
+          <span ion-text color="color1">{{item.time}}</span>
+          <p ion-text color="color2">Next Match</p>
+        </div>
+        <!-- Time -->
+        <div class="matchResult" item-right *ngIf="item.result!=''">
+            <span ion-text color="color1"  >{{item.result}}</span>
+          <p ion-text color="color2">Full Time</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!--Team news -->
+  <div *ngSwitchCase="'NEWS'" padding>
+    <ion-card class="newsCard" *ngFor="let item of lastNews" navPush="TopNewsDetailsPage">
+      <!-- if images in this slide equaled in height please remove class="imgResponsive" from img Tag -->
+      <img class="imgResponsive" src="{{item.img}}"/>
+      <div class="container" text-left>
+        <h4 ion-text color="light">{{item.title}}</h4>
+        <p ion-text color="light">{{item.subTitle}}</p>
+  
+        <ion-grid no-padding class="gridFooter">
+          <ion-row>
+            <ion-col col padding-right>
+              <p ion-text color="light">4 HOURS AGO</p>
+            </ion-col>
+            <!-- users like number -->
+            <ion-col col-auto padding-right>
+              <ion-item (click)="like($event,item)">
+                <ion-icon  item-left color="color2" [name]="item.clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+                <p ion-text color="light">{{item.numLike}}</p>
+              </ion-item>
+            </ion-col>
+  
+            <!-- user Comment number -->
+            <ion-col col-auto>
+              <ion-item>
+                <ion-icon name="md-text" color="color2" item-left></ion-icon>
+                <p ion-text color="light">160</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card>
+  </div>
+
+  <!-- Team Stats -->
+  <div *ngSwitchCase="'STATS'" class="leagueStats">
+    <ion-list *ngFor="let item of teamStats">
+      <ion-list-header>
+        <h5 ion-text color="color2">{{item.title}}</h5>
+      </ion-list-header>
+
+      <ion-item class="thumbnailItem">
+        <ion-thumbnail item-left>
+          <!-- Team image -->
+          <img src="{{item.img}}"/>
+        </ion-thumbnail>
+        <!-- team Name -->
+        <h5 ion-text color="dark">{{item.team}}</h5>
+        <!-- note -->
+        <p ion-text color="dark">{{item.note}}</p>
+        <!-- goals or rating Number -->
+        <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!--Team Squad  -->
+  <div class="squad" *ngSwitchCase="'SQUAD'">
+    <ion-list *ngFor="let x of teamSquad">
+      <ion-list-header>
+        <h5 ion-text color="color2">{{x.title}}</h5>
+      </ion-list-header>
+      <ion-item class="avatarItem"  margin-bottom *ngFor="let item of x.items">
+        <ion-avatar item-left>
+          <img src="{{item.img}}">
+        </ion-avatar>
+        <h5 ion-text color="dark">{{item.name}}</h5> 
+      </ion-item>
+    </ion-list>
+  </div>
+  <!--Team photos -->
+  <div *ngSwitchCase="'PHOTOS'" padding>
+    <ion-list class="lastPhotos">
+      <ion-item class="photoItem" *ngFor="let item of photos" navPush="PhotosDetailsPage">  
+        <!-- if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  -->
+        <img src="{{item.img}}" class="imgResponsive"/>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-auto>
+              <h4 ion-text color="dark">{{item.title}}</h4>
+            </ion-col>
+            <ion-col col>
+              <p ion-text color="color2">200 photos</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

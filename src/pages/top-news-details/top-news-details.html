@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Top News</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <img src="assets/imgs/news2.png"/>
+    <ion-card-content>  
+      <ion-grid no-padding class="gridFooter">
+        <ion-row>  
+          <ion-col col padding-right> 
+            <p ion-text color="color4">4 HOURS AGO</p>
+          </ion-col>
+          <!-- users like number -->
+          <ion-col col-auto padding-right>
+            <ion-item (click)="like($event)">
+              <ion-icon  item-left color="color2" [name]="clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+              <p ion-text color="color4">{{numLike}}</p>
+            </ion-item>
+          </ion-col>
+
+          <!-- user Comment number -->
+          <ion-col col-auto>
+              <ion-item>
+                <ion-icon name="md-text" color="color2" item-left></ion-icon>
+                <p ion-text color="color4">160</p>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card-title>
+        Real Madrid want to win Club World Cup
+      </ion-card-title>
+      <p>
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list class="commentsList" margin-top>   
+    <ion-list-header>
+      Comment        
+    </ion-list-header>
+    <!-- comment -->
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="assets/imgs/player2.png">
+      </ion-avatar>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-auto>
+            <h5 ion-text color="dark">Wendy Verdades</h5>   
+          </ion-col>
+          <ion-col col padding-left>
+            <p ion-text color="dark">3days ago</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <p ion-text color="dark">
+        It is a long established fact that a reader will be distracted 
+      </p>
+    </ion-item>
+
+    <!-- add comment -->
+    <ion-item margin-top> 
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col>
+            <ion-item class="writComment">
+              <ion-textarea placeholder="Write a Comment"></ion-textarea>
+            </ion-item>
+          </ion-col>
+          <ion-col col-auto padding-left>
+            <button ion-button color="color1" class="addBtn">
+              Add
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

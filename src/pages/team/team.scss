@@ -1,0 +1,82 @@
+page-team {
+    .photoItem{
+        border-radius:$control-radius;
+        @extend %outerShadow;
+        margin-bottom:$content-padding;
+    }
+    .teamMatchs{
+        .item{
+            &.thumbnailItem{
+                padding:$content-padding*2 $content-padding;
+                margin:$content-padding;
+                @extend %outerShadow;
+                &:last-of-type{
+                    margin-bottom:$content-padding!important;
+                }
+                ion-thumbnail{
+                    img{
+                        width:30px;
+                        height:30px;
+                    }
+                }
+                .col{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    &:last-of-type{
+                        text-align: center;
+                        p{
+                            @include whiteNormal(32px,2);
+                        }
+                    }
+                }
+                
+                .matchTime,.matchResult{
+                    text-align: center;
+                    width:60px; 
+                    span{
+                        font-size:1.6rem;
+                        font-weight:500;
+                        @include whiteNormal(20px,1);
+                    }
+                    p{
+                        font-size:.8rem!important;
+                        @include whiteNormal(15px,1);
+                        margin:0px;
+                    }
+                }
+            }
+        }
+    }
+
+    .squad{
+        margin:$content-padding;
+        width:calc(100% - #{$content-padding}*2);
+        @extend %outerShadow;
+        border-radius:$control-radius;
+        .list{
+            display:inline-block;
+            padding:$content-padding 0px;
+            margin:0px $content-padding;  
+            width: calc(100% - #{$content-padding}*2);
+            border-bottom:1px solid color($colors,color4);
+            &:last-of-type{
+                border-bottom:none;
+            }
+        }
+        .item{
+            &.list-header{
+                margin:0px 0px $content-padding!important;
+                h5{
+                    margin:0px;
+                    font-weight:500;
+                    @include whiteNormal(20px,1);
+                }
+            }
+            &.avatarItem{
+                padding:0px;
+                width:100%;
+            }
+        }
+    }
+}

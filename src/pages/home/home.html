@@ -1,15 +1,138 @@
-<!--
-  Generated template for the HomePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+
   <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-slides>
+    <ion-slide *ngFor="let item of lastNews" navPush="TopNewsDetailsPage">
+      <ion-card class="newsCard">
+        <!-- if images in this slide equaled in height please remove class="imgResponsive" from img Tag -->
+        <img class="imgResponsive" src="{{item.img}}"/>
+        <div class="container" text-left>
+          <h4 ion-text color="light">{{item.title}}</h4>
+          <p ion-text color="light">{{item.subTitle}}</p>
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <div padding>
+    <!-- top news -->
+    <div class="topNews">
+      <ion-item navPush="TopNewsDetailsPage">
+        <ion-thumbnail item-left>
+          <img src="assets/imgs/t1.png"/>
+        </ion-thumbnail>
+        <div>
+          <h5 ion-text color="dark">Real Madrid want to win Club World Cup</h5>
+          <p ion-text color="color4" class="subtitle"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        </div>
+
+        <ion-grid no-padding class="gridFooter">
+          <ion-row>
+            <ion-col col padding-right>
+              <p ion-text color="color4">4 HOURS AGO</p>
+            </ion-col>
+            <!-- users like number -->
+            <ion-col col-auto padding-right>
+              <ion-item (click)="like($event)">
+                <ion-icon  item-left color="color2" [name]="clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
+                <p ion-text color="color4">{{numLike}}</p>
+              </ion-item>
+            </ion-col>
+
+            <!-- user Comment number -->
+            <ion-col col-auto>
+                <ion-item>
+                  <ion-icon name="md-text" color="color2" item-left></ion-icon>
+                  <p ion-text color="color4">160</p>
+                </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <button ion-button clear icon-right float-right class="viewAllBtn" navPush="TopNewsPage">
+        All News
+        <ion-icon class="goal-arrow-right"></ion-icon>
+      </button>
+    </div>
+
+    <!-- matches list -->
+    <ion-list margin-top>
+      <ion-list-header>
+        <button ion-button block clear icon-right float-right class="viewAllBtn"  navPush="AllMatchesPage">
+          All Matches
+          <ion-icon class="goal-arrow-right"></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- match item  -->
+      <ion-item class="matchItem" *ngFor="let item of matches">
+        <ion-grid>
+          <ion-row>
+            <!-- first team -->
+            <ion-col col>
+              <ion-item navPush="TeamPage">
+                <img src="{{item.firstTeamImg}}" item-right/>
+                <p text-right>{{item.firstTeamName}}</p>
+              </ion-item>
+            </ion-col>
+            <!-- match time -->
+            <ion-col col-auto>
+              <span ion-text color="color1">{{item.time}}</span>
+              <p ion-text color="color2">Next Match</p>
+            </ion-col>
+            <!-- second team -->
+            <ion-col col>
+              <ion-item navPush="TeamPage">
+                <img src="{{item.secondTeamImg}}" item-left/>
+                <p text-left>{{item.secondTeamName}}</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <!-- last photos -->
+    <ion-list class="lastPhotos" margin-top>
+      <ion-list-header>
+        <button ion-button block clear icon-right float-right class="viewAllBtn" navPush="PhotosPage">
+          Photos
+          <ion-icon class="goal-arrow-right"></ion-icon>
+        </button>
+      </ion-list-header>
+      <ion-item class="photoItem" navPush="PhotosDetailsPage" >
+        <!-- if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  -->
+        <img src="assets/imgs/p001.png" class="imgResponsive"/>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-auto>
+              <h4 ion-text color="dark">2018 World Cup</h4>
+            </ion-col>
+            <ion-col col>
+              <p ion-text color="color2">200 photos</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+  </div>
 
 </ion-content>

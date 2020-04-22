@@ -10,6 +10,10 @@ import { CustomerPage } from '../pages/customer/customer';
 import { CustomerPageModule } from '../pages/customer/customer.module';
 import { LeaguePage } from '../pages/league/league';
 import { LeaguePageModule } from '../pages/league/league.module';
+import { TeamPageModule } from '../pages/team/team.module';
+import { TeamPage } from '../pages/team/team';
+import { SignInPage } from '../pages/sign-in/sign-in';
+import { SignInPageModule } from '../pages/sign-in/sign-in.module';
 
 
 import {StatusBar} from '@ionic-native/status-bar';
@@ -23,6 +27,7 @@ import {FIREBASE_CONFIG} from "../config/firebase.config";
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { GetProvider } from '../providers/get-provider';
+import { Global } from '../providers/global';
 import { IonicStorageModule } from '@ionic/Storage';
 
 @NgModule({
@@ -40,7 +45,9 @@ import { IonicStorageModule } from '@ionic/Storage';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
     CustomerPageModule,
-    LeaguePageModule
+    LeaguePageModule,
+    TeamPageModule,
+    SignInPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,6 +63,7 @@ import { IonicStorageModule } from '@ionic/Storage';
     NotificationsService,
     PostProvider,
     GetProvider,
+    Global,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>Notification</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only>
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of notifications">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col padding-right>
+            <h5 ion-text color="dark">{{item.title}}</h5>
+          </ion-col>
+          <ion-col col-auto>
+            <p ion-text color="dark">30M Ago</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <p ion-text color="dark">{{item.content}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

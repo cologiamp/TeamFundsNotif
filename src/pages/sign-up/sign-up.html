@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+<ion-content  class="sign" style="background-image:url('assets/imgs/back.png')" >
+  <div class="signForm">
+    <img src="assets/imgs/logo.png"/>
+    <ion-list>
+      <ion-item class="halfItem" float-left>
+        <ion-icon name="md-person" item-left color="light"></ion-icon>
+        <ion-input type="text" placeholder="First Name"></ion-input>
+      </ion-item>
+      <ion-item class="halfItem"  float-left>
+        <ion-input type="text" placeholder="Last Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-mail" item-left color="light"></ion-icon>
+        <ion-input type="email" placeholder="E-mail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-lock" item-left color="light"></ion-icon>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block color="color2" (click)="rootPage('HomePage')">CREATE ACCOUNT</button>
+  </div>
+</ion-content>

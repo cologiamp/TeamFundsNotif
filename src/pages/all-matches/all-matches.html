@@ -1,0 +1,82 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon class="goal-menu" ></ion-icon>
+    </button>
+    <ion-title>All Matches</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="global.callSearch($event)">
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button ion-button icon-only navPush="NotificationPage">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>  
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar class="calendarToolbar">
+    <!-- Calendar  -->
+    <ion-grid class="calendar">
+      <ion-row>
+        <ion-col col-auto>
+          <ion-icon name="ios-arrow-back" color="color2" (click)="change_month('decrease')"></ion-icon>
+        </ion-col>
+        <ion-col col>
+          <p>
+            <span>{{month_name}}</span>,
+            <span>{{year}}</span>
+          </p>
+        </ion-col>
+        <ion-col col-auto>
+          <ion-icon name="ios-arrow-forward" color="color2" (click)="change_month('increase')"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="daysScroll">
+      <ion-scroll scrollX="true" scrollY="false" >
+        <div class="day" *ngFor="let day of days ; let i=index" (click)="toggleGroup(i)" [ngClass]="{'active': isGroupShown(i)}" >
+          <p>{{day.name}}</p>
+          <button ion-button clear>{{day.day_num}} </button>
+        </div>
+      </ion-scroll>
+    </div>
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+   <!-- matches list -->
+  <ion-list margin-top *ngFor="let item of matches">
+    <ion-list-header>
+      {{item.title}}
+      <ion-icon name="md-star" color="color1" item-left *ngIf="item.title=='Favorites'"></ion-icon>
+      <img src="assets/imgs/league/global3.png" item-left *ngIf="item.title!='Favorites'"/>
+    </ion-list-header>
+    <!-- match item  -->
+    <ion-item class="matchItem" *ngFor="let match of item.items">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col>
+            <ion-item navPush="TeamPage">
+              <img src="{{match.firstTeamImg}}" item-right/>
+              <p text-right>{{match.firstTeamName}}</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+          <ion-col col-auto>
+            <span ion-text color="color1">{{match.time}}</span>
+            <p ion-text color="color2">Next Match</p>
+          </ion-col>
+          <!-- second team -->
+          <ion-col col>
+            <ion-item navPush="TeamPage">
+              <img src="{{match.secondTeamImg}}" item-left/>
+              <p text-left>{{match.secondTeamName}}</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,3 +1,41 @@
 page-home {
-
+    .slides{
+        height:auto;
+        .card {
+            &.newsCard{
+                border-radius:0px;
+                margin-bottom:0px;
+                .container{
+                    padding-bottom:$content-padding*2;
+                }
+            }
+        }
+    }  
+    .topNews{
+        .gridFooter{
+            p{
+                height:auto!important;
+                line-height:normal!important;
+              }
+        }
+    }
+    .list{
+        display:block;
+        width:100%;
+        border-radius:$control-radius;
+        @extend %outerShadow;
+        overflow:hidden;
+        .list-header{
+            background-color:color($colors,color5);
+            margin-top:0px!important;
+            .button{
+                padding:0px $content-padding;
+                height:$button-md-height;
+                .button-inner{
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
 }
+        

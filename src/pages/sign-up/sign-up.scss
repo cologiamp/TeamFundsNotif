@@ -1,0 +1,20 @@
+page-sign-up {
+    .header{
+        width:$toolbar-md-height;
+        left: auto;
+        .toolbar-background{
+            background:none;
+        }
+    }
+    .scroll-content{
+        margin-top:0px!important;
+    }
+    .backBtn{
+        width:$control-height;
+        background: none;
+        box-shadow:none;
+        &.activated{
+            background:none;
+        }
+    }
+}
