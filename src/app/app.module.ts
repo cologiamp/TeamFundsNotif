@@ -8,6 +8,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CustomerPage } from '../pages/customer/customer';
 import { CustomerPageModule } from '../pages/customer/customer.module';
+import { LeaguePage } from '../pages/league/league';
+import { LeaguePageModule } from '../pages/league/league.module';
 
 
 import {StatusBar} from '@ionic-native/status-bar';
@@ -20,6 +22,7 @@ import {FIREBASE_CONFIG} from "../config/firebase.config";
 
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
+import { GetProvider } from '../providers/get-provider';
 import { IonicStorageModule } from '@ionic/Storage';
 
 @NgModule({
@@ -36,7 +39,8 @@ import { IonicStorageModule } from '@ionic/Storage';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
-    CustomerPageModule
+    CustomerPageModule,
+    LeaguePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,6 +55,7 @@ import { IonicStorageModule } from '@ionic/Storage';
     Firebase,
     NotificationsService,
     PostProvider,
+    GetProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

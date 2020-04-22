@@ -88,5 +88,10 @@ export class LoginPage {
     //this.router.navigate(['/customer']);
   }
 
+  formLeague(){
+    this.navCtrl.setRoot('LeaguePage');
+    //this.router.navigate(['/customer']);
+  }
+
 
 }

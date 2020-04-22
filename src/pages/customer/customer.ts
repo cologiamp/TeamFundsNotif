@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PostProvider } from '../../providers/post-provider';
 import { Storage } from '@ionic/Storage';
+
 /**
  * Generated class for the CustomerPage page.
  *
