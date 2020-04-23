@@ -21,9 +21,15 @@
     <!-- leagues list -->
     <ion-list class="leagueList">
       <ion-list-header (click)="openPage('SelectLeaguePage')" menuClose>
-        <ion-icon name="md-add-circle" item-left color="color2"></ion-icon>
-        SELECTE LEAGUE
+        <!--
+        <ion-icon style="margin-bottom: 3px !important;" name="football" item-left color="color2"></ion-icon>
+        -->
+        FAVOURITE LEAGUES
       </ion-list-header>
+      <ion-item  menuClose (click)="openPage('SelectLeaguePage')">
+        <img src="assets/imgs/league/global.png" item-left/>
+        View All Leagues
+      </ion-item>
       <ion-item  menuClose *ngFor="let item of leagues" (click)="openPage('LeagueDetailsPage')">
         <img src="{{item.img}}" item-left/>
         {{item.name}}
@@ -33,14 +39,15 @@
     <!-- Favorite Team  -->
     <ion-list class="leagueList">
       <ion-list-header>
-        <ion-icon name="md-add-circle" item-left color="color2"></ion-icon>
-        Favorite Team
+        FAVOURITE TEAM/S
       </ion-list-header>
       <ion-item *ngFor="let item of teams" menuClose  (click)="openPage('TeamPage')">
         <img src="{{item.img}}" item-left/>
         {{item.name}}
       </ion-item>
     </ion-list>
+
+
   </ion-content>
 
 </ion-menu>

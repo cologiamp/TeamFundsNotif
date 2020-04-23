@@ -9,20 +9,34 @@ import { Global } from '../../providers/global';
   templateUrl: 'league-details.html',
 })
 export class LeagueDetailsPage {
-  itemInBar=["TABEL","MATCHES","NEWS","STATS","PHOTOS"];
+  //itemInBar=["TABLE","MATCHES","NEWS","STATS","PHOTOS"];
+  itemInBar=["TABLE", "MATCHES", "STATS"];
   constructor(public navCtrl: NavController,private global:Global) {
   }
 
   groups=[
     {
-      name:'Grp.A',
+      name:'Standings',
       teams:[
+        {name:'Liverpool',img:'assets/imgs/teams/liverpool.png',mp:6,w:3,d:2,l:1,f:10,a:6,p:11},
+        {name:'Villarreal',img:'assets/imgs/teams/villarreal.png',mp:6,w:3,d:1,l:2,f:10,a:7,p:10},
+        {name:'Braga',img:'assets/imgs/teams/braga.png',mp:6,w:2,d:2,l:2,f:6,a:6,p:8},
+        {name:'Spartak Moscow',img:'assets/imgs/teams/spartak_moscow.png',mp:6,w:1,d:1,l:4,f:1,a:8,p:4},
+        {name:'Liverpool',img:'assets/imgs/teams/liverpool.png',mp:6,w:3,d:2,l:1,f:10,a:6,p:11},
+        {name:'Villarreal',img:'assets/imgs/teams/villarreal.png',mp:6,w:3,d:1,l:2,f:10,a:7,p:10},
+        {name:'Braga',img:'assets/imgs/teams/braga.png',mp:6,w:2,d:2,l:2,f:6,a:6,p:8},
+        {name:'Spartak Moscow',img:'assets/imgs/teams/spartak_moscow.png',mp:6,w:1,d:1,l:4,f:1,a:8,p:4},
+        {name:'Liverpool',img:'assets/imgs/teams/liverpool.png',mp:6,w:3,d:2,l:1,f:10,a:6,p:11},
+        {name:'Villarreal',img:'assets/imgs/teams/villarreal.png',mp:6,w:3,d:1,l:2,f:10,a:7,p:10},
+        {name:'Braga',img:'assets/imgs/teams/braga.png',mp:6,w:2,d:2,l:2,f:6,a:6,p:8},
+        {name:'Spartak Moscow',img:'assets/imgs/teams/spartak_moscow.png',mp:6,w:1,d:1,l:4,f:1,a:8,p:4},
         {name:'Liverpool',img:'assets/imgs/teams/liverpool.png',mp:6,w:3,d:2,l:1,f:10,a:6,p:11},
         {name:'Villarreal',img:'assets/imgs/teams/villarreal.png',mp:6,w:3,d:1,l:2,f:10,a:7,p:10},
         {name:'Braga',img:'assets/imgs/teams/braga.png',mp:6,w:2,d:2,l:2,f:6,a:6,p:8},
         {name:'Spartak Moscow',img:'assets/imgs/teams/spartak_moscow.png',mp:6,w:1,d:1,l:4,f:1,a:8,p:4},
       ]   
     },
+    /*
     {
       name:'Grp.B',
       teams:[
@@ -41,6 +55,7 @@ export class LeagueDetailsPage {
         {name:'Spartak Moscow',img:'assets/imgs/teams/spartak_moscow.png',mp:6,w:1,d:1,l:4,f:1,a:8,p:4},
       ]   
     }
+    */
   ]   
   
   matches=[
@@ -111,7 +126,7 @@ export class LeagueDetailsPage {
     {title:'POSSESSION',img:'assets/imgs/teams/Marseille.png',team:'Marseille',num:'8.5',note:'Total matches:6'},
   ]
   activeBtn=0;
-  tit='TABEL'; 
+  tit='TABLE'; 
   changeTab(i,title){
     this.activeBtn = i;
     this.tit=title;   

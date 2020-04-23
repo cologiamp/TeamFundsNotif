@@ -12,9 +12,9 @@ export class HomePage {
   }
 
   lastNews=[
-    {img:'assets/imgs/news2.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'},
-    {img:'assets/imgs/news1.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'},
-    {img:'assets/imgs/news3.png',title:'Real Madrid want to win Club World Cup',subTitle:'is simply dummy text of the printing and typesetting industry.'}
+    {img:'assets/imgs/news2.png',title:'Hi! Welcome to TeamGoal!', subTitle:'TeamGoal is the best platform to support your club.'},
+    {img:'assets/imgs/news1.png',title:'Hi! Welcome to TeamGoal!', subTitle:'TeamGoal is the best platform to support your club.'},
+    {img:'assets/imgs/news3.png',title:'Hi! Welcome to TeamGoal!', subTitle:'TeamGoal is the best platform to support your club.'}
   ]
 
   matches=[

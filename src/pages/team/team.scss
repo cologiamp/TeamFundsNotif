@@ -1,4 +1,37 @@
 page-team {
+    .list-top{
+        display:block;
+        width:calc(100% - #{$content-padding}*2);
+        margin:$content-padding;
+        border-radius:$control-radius;
+        @extend %outerShadow;
+        overflow:hidden;
+        .list-header{
+            background-color:color($colors,color5);
+            margin-top:0px!important;
+            height:$control-height;
+            padding:0px $content-padding;
+            .item-inner{
+                margin:0px;
+            }
+            .label{
+                color:color($colors,dark);
+                font-size:$mainFont;
+                font-weight:bold;
+                @include whiteNoWrap(20px);
+            }
+            .icon{
+                font-size:2rem;
+                width: 22px;
+                text-align: center;
+                min-height:0px;
+            }
+            img{
+                height:20px;
+                object-fit: contain;
+            }
+        }
+    }
     .photoItem{
         border-radius:$control-radius;
         @extend %outerShadow;

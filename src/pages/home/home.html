@@ -34,6 +34,7 @@
 
   <div padding>
     <!-- top news -->
+  <!--
     <div class="topNews">
       <ion-item navPush="TopNewsDetailsPage">
         <ion-thumbnail item-left>
@@ -49,7 +50,7 @@
             <ion-col col padding-right>
               <p ion-text color="color4">4 HOURS AGO</p>
             </ion-col>
-            <!-- users like number -->
+
             <ion-col col-auto padding-right>
               <ion-item (click)="like($event)">
                 <ion-icon  item-left color="color2" [name]="clickLike ? 'ios-heart' : 'ios-heart-outline'" ></ion-icon>
@@ -57,7 +58,6 @@
               </ion-item>
             </ion-col>
 
-            <!-- user Comment number -->
             <ion-col col-auto>
                 <ion-item>
                   <ion-icon name="md-text" color="color2" item-left></ion-icon>
@@ -72,12 +72,51 @@
         <ion-icon class="goal-arrow-right"></ion-icon>
       </button>
     </div>
+  -->
 
-    <!-- matches list -->
+    <!-- today's matches list -->
     <ion-list margin-top>
       <ion-list-header>
         <button ion-button block clear icon-right float-right class="viewAllBtn"  navPush="AllMatchesPage">
-          All Matches
+          Today's Matches
+          <ion-icon class="goal-arrow-right"></ion-icon>
+        </button>
+      </ion-list-header>
+      <!-- match item  -->
+      <ion-item class="matchItem" *ngFor="let item of matches">
+        <ion-grid>
+          <ion-row>
+            <!-- first team -->
+            <ion-col col>
+              <ion-item navPush="TeamPage">
+                <img src="{{item.firstTeamImg}}" item-right/>
+                <p text-right>{{item.firstTeamName}}</p>
+              </ion-item>
+            </ion-col>
+            <!-- match time -->
+            <ion-col col-auto>
+              <span navPush="MatchDetailsPage" ion-text color="color1">{{item.time}}</span>
+              <p navPush="MatchDetailsPage" ion-text color="color2">Next Match</p>
+            </ion-col>
+            <!-- second team -->
+            <ion-col col>
+              <ion-item navPush="TeamPage">
+                <img src="{{item.secondTeamImg}}" item-left/>
+                <p text-left>{{item.secondTeamName}}</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+    <!-- end of today's matches list -->
+
+
+    <!-- future matches list -->
+    <ion-list margin-top>
+      <ion-list-header>
+        <button ion-button block clear icon-right float-right class="viewAllBtn"  navPush="AllMatchesPage">
+          Future Matches
           <ion-icon class="goal-arrow-right"></ion-icon>
         </button>
       </ion-list-header>
@@ -108,8 +147,11 @@
         </ion-grid>
       </ion-item>
     </ion-list>
+    <!-- future matches list -->
+
 
     <!-- last photos -->
+    <!--
     <ion-list class="lastPhotos" margin-top>
       <ion-list-header>
         <button ion-button block clear icon-right float-right class="viewAllBtn" navPush="PhotosPage">
@@ -118,7 +160,7 @@
         </button>
       </ion-list-header>
       <ion-item class="photoItem" navPush="PhotosDetailsPage" >
-        <!-- if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  -->
+         if you want this image reponsive in large screen please remove class="imgResponsive" from img Tag  
         <img src="assets/imgs/p001.png" class="imgResponsive"/>
         <ion-grid>
           <ion-row>
@@ -132,6 +174,7 @@
         </ion-grid>
       </ion-item>
     </ion-list>
+    -->
 
   </div>
 

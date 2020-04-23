@@ -33,24 +33,23 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'HOME', component: 'HomePage' },
-      { title: 'TOP NEWS', component: 'TopNewsPage' },
+      { title: 'SUPPORT MY TEAM', component: 'TopNewsPage' },
       { title: 'ALL MATCHES', component: 'AllMatchesPage' },
-      { title: 'NOTIFICATION', component: 'NotificationPage' },
-      { title: 'PROFILE', component: 'ProfilePage' },
       { title: 'SETTINGS', component: 'SettingPage' },
       { title: 'LOG OUT', component: 'SignInPage' },
     ];   
 
     this.leagues=[
-      {img:'assets/imgs/league/global.png',name:'Europa League'},
-      {img:'assets/imgs/league/global.png',name:'INT - Champions League'},
-      {img:'assets/imgs/league/global.png',name:'INT - FIFA Club World Cup'},
+      {img:'assets/imgs/league/allsvenskan-logo-menu.png',name:'Allsvenskan'},
+      {img:'assets/imgs/league/superettan-logo-menu.png',name:'Superettan'},
+      {img:'assets/imgs/league/div1-logo-menu.png',name:'Division 1 (Norra, Södra)'},
+      {img:'assets/imgs/league/div2-logo-menu.png',name:'Division 2 (Norrland, N. Svealand, S. Svealand, N. Götaland, Ö. Götaland, V. Götaland) '},
+      {img:'assets/imgs/league/div2-logo-menu.png',name:'Division 3'},
     ];
 
     this.teams=[
-      {img:'assets/imgs/league/global.png',name:'Arsenal'},
-      {img:'assets/imgs/league/global.png',name:'Real Madrid'},
-      {img:'assets/imgs/league/global.png',name:'Barcelona'},
+      {img:'assets/imgs/league/global.png',name:'Östersunds FK'},
+      {img:'',name:''},
     ];
 
     platform.ready().then(() => {

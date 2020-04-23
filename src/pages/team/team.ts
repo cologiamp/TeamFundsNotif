@@ -9,7 +9,13 @@ import { Global } from '../../providers/global';
 })
 export class TeamPage {
 
-  itemInBar=["MATCHES","NEWS","STATS","SQUAD","PHOTOS"];
+  //itemInBar=["MATCHES","NEWS","STATS","SQUAD","PHOTOS"];
+  itemInBar=["MATCHES","STATS","SQUAD","SUPPORTERS"];
+  amountGeneral: number;
+  amountXGoal: number;
+  amountXDraw: number;
+  amountXWin: number;
+
   constructor(public navCtrl: NavController,private global:Global) {
   }
   teams=[
@@ -128,4 +134,11 @@ export class TeamPage {
   addFavoriteTeam(){
     this.favoriteTeam=(this.favoriteTeam!=true)? true:false;
   }
+
+  calcTotal(){
+    var total = this.amountGeneral + this.amountXGoal + this.amountXDraw + this.amountXWin;
+    return total;
+  }
+
+
 }  

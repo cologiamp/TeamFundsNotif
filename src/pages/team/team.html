@@ -30,6 +30,170 @@
 
   <!-- Team Matches -->
   <div class="teamMatchs" *ngSwitchCase="'MATCHES'">
+
+  <!-- SUPPORT YOUR TEAM TABLE -->
+  <ion-list class="list-top" margin-top>
+    <ion-list-header>
+      Real Madrid
+      <img src="assets/imgs/pay-icon2.jpg" item-left/>
+      <!--
+      <ion-icon name="md-star" color="color1" item-left></ion-icon>
+      -->
+    </ion-list-header>
+    <!-- match item  -->
+    <ion-item class="matchItem">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col-7>
+            <ion-item navPush="TeamPage">
+              <ion-icon style="font-size: 16px; color: #2f2f2f; margin-top: 9px !important;" name="logo-euro" color="color1" item-right></ion-icon>
+              <!--
+              <img src="assets/imgs/teams/liverpool.png" item-right/>
+              -->
+              <p text-left style="font-size: 13px !important;"> One Time Team Support</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+
+          <!-- second team -->
+          <ion-col col-3>
+            <ion-item>
+              <ion-input style="font-size: 13px; font-weight: bold;" type="number" [(ngModel)]="amountGeneral" value="0" min="0"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+ 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+    <ion-item class="matchItem">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col-7>
+            <ion-item navPush="TeamPage">
+              <ion-icon style="font-size: 16px; color: #2f2f2f; margin-top: 9px !important;" name="logo-euro" color="color1" item-right></ion-icon>
+              <!--
+              <img src="assets/imgs/teams/liverpool.png" item-right/>
+              -->
+              <p text-left style="font-size: 13px !important;"> Support x Scored Goal</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+
+          <!-- second team -->
+          <ion-col col-3>
+            <ion-item>
+              <ion-input style="font-size: 13px; font-weight: bold;" type="number" [(ngModel)]="amountXGoal" value="0" min="0"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+
+    <ion-item class="matchItem">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col-7>
+            <ion-item navPush="TeamPage">
+              <ion-icon style="font-size: 16px; color: #2f2f2f; margin-top: 9px !important;" name="logo-euro" color="color1" item-right></ion-icon>
+              <!--
+              <img src="assets/imgs/teams/liverpool.png" item-right/>
+              -->
+              <p text-left style="font-size: 13px !important;"> Support x Draw</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+
+          <!-- second team -->
+          <ion-col col-3>
+            <ion-item>
+              <ion-input style="font-size: 13px; font-weight: bold;" type="number" [(ngModel)]="amountXDraw" value="0" min="0"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+ 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+    <ion-item class="matchItem">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col-7>
+            <ion-item navPush="TeamPage">
+              <ion-icon style="font-size: 16px; color: #2f2f2f; margin-top: 9px !important;" name="logo-euro" color="color1" item-right></ion-icon>
+              <!--
+              <img src="assets/imgs/teams/liverpool.png" item-right/>
+              -->
+              <p text-left style="font-size: 13px !important;"> Support x Win</p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+
+          <!-- second team -->
+          <ion-col col-3>
+            <ion-item>
+              <ion-input style="font-size: 13px; font-weight: bold;" type="number" [(ngModel)]="amountXWin" value="0" min="0"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+ 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+
+        <ion-item class="matchItem">
+      <ion-grid>
+        <ion-row>
+          <!-- first team -->
+          <ion-col col-7>
+            <ion-item navPush="TeamPage">
+              <ion-icon style="font-size: 18px; color: #2f2f2f; margin-top: 8px !important;" name="logo-euro" color="color1" item-right></ion-icon> 
+              <!--
+              <img src="assets/imgs/teams/liverpool.png" item-right/>
+              -->
+              <p text-left style="font-size: 14px !important; font-weight: bold;"> TOTAL SUPPORT </p>
+            </ion-item>
+          </ion-col>
+          <!-- match time -->
+
+          <!-- second team -->
+          <ion-col col-3>
+            <ion-item>
+              <p text-left style="font-size: 17px !important; font-weight: bold; margin-left: 7px;"> {{ calcTotal() }} </p>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+            <ion-item>
+              <img src="assets/imgs/pay-icon4.png" item-right/>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+  </ion-list>
+
+
+
     <ion-list >
       <ion-item class="thumbnailItem" *ngFor="let item of teams" navPush="MatchDetailsPage">
         <ion-thumbnail item-left>
@@ -150,6 +314,28 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+    <!-- Team Stats -->
+  <div *ngSwitchCase="'SUPPORTERS'" class="leagueStats">
+    <ion-list *ngFor="let item of teamStats">
+      <ion-list-header>
+        <h5 ion-text color="color2">{{item.title}}</h5>
+      </ion-list-header>
+
+      <ion-item class="thumbnailItem">
+        <ion-thumbnail item-left>
+          <!-- Team image -->
+          <img src="{{item.img}}"/>
+        </ion-thumbnail>
+        <!-- team Name -->
+        <h5 ion-text color="dark">{{item.team}}</h5>
+        <!-- note -->
+        <p ion-text color="dark">{{item.note}}</p>
+        <!-- goals or rating Number -->
+        <span ion-text color="color1" class="rateNum" item-right>{{item.num}}</span>
       </ion-item>
     </ion-list>
   </div>

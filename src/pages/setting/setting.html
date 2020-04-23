@@ -20,18 +20,14 @@
       <ion-label>App Language</ion-label>
         <ion-select interface="popover" placeholder="App Language" [(ngModel)]="language">
           <ion-option value="en">English</ion-option>
-          <ion-option value="fr">French</ion-option>
+          <ion-option value="sw">Swedish</ion-option>
         </ion-select>
     </ion-item>
   </div>
   <div class="static_notify">
     <ion-item>
-      <ion-label>Notification</ion-label>
+      <ion-label>Notifications</ion-label>
       <ion-checkbox [(ngModel)]="notification"></ion-checkbox>
     </ion-item>
-    <ion-item>
-      <ion-label>Animation avilability</ion-label>
-      <ion-checkbox (ionChange)="animateApp($event)"  checked="{{action}}" [(ngModel)]="action"></ion-checkbox>
-    </ion-item> 
   </div>
 </ion-content>

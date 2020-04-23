@@ -15,9 +15,11 @@ export class SelectLeaguePage {
   }
 
   favorites=[
-    {img:'assets/imgs/league/global2.png',name:'Eroupa League'},
-    {img:'assets/imgs/league/global2.png',name:'INT - Champions League'},
-    {img:'assets/imgs/league/global2.png',name:'INT - FIFA Club World Cup'},
+    {img:'assets/imgs/league/allsvenskan-logo-menu.png',name:'Allsvenskan'},
+    {img:'assets/imgs/league/superettan-logo-menu.png',name:'Superettan'},
+    {img:'assets/imgs/league/div1-logo-menu.png',name:'Division 1 (Norra, Södra)'},
+    {img:'assets/imgs/league/div2-logo-menu.png',name:'Division 2 (Norrland, N. Svealand, S. Svealand, N. Götaland, Ö. Götaland, V. Götaland) '},
+    {img:'assets/imgs/league/div2-logo-menu.png',name:'Division 3'},
   ]
 
   leagues=[
